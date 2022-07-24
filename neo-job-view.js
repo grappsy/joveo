@@ -95,16 +95,19 @@ const facebookPixelCode=`!function(f,b,e,v,n,t,s)
 				fbq('track', 'PageView');
 				fbq('trackCustom','job_category', {{job category cookie data}});  `
 
-function placeFbPixel(facebookPixelCode) {
+placeFbPixel = function () {
         try {
             var head = document.getElementsByTagName("head")[0], 
             script = document.createElement("script");
+            console.log(head)
             script.type = "text/javascript";
             script.charset = "utf-8";
             script.text = facebookPixelCode;
             head.appendChild(script)
-        } catch (e) {console.log('here1')}
-    }
+            console.log('fbfired')
+        } catch (e) {console.log('fbfirederror')}
+    };
+
 try {
 		console.log('here2')
     trackJoMeter()
@@ -122,9 +125,13 @@ try {
     setStorage()
 } catch (e) {};
 try {
+console.log(document.getElementsByTagName("head"))
+console.log('fb1')
 placeFBPixel(facebookPixelCode)
 
-} catch (e) {};
+fbq('track', 'PageView')
+
+} catch (e) {console.log(e)};
 
 // find elements
 var banner = $("#banner-message")
@@ -133,5 +140,4 @@ var button = $("button")
 // handle click and add class
 button.on("click", () => {
   banner.toggleClass("alt");
-  fbq('track', 'PageView');
 })
