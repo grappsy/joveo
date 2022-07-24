@@ -90,6 +90,7 @@ const facebookPixelCode=`!function(f,b,e,v,n,t,s)
 				t.src=v;s=b.getElementsByTagName(e)[0];
 				s.parentNode.insertBefore(t,s)}(window, document,'script',
 				'https://connect.facebook.net/en_US/fbevents.js');
+        console.log('aaaaaa')
 				fbq('init', '259166819589309');
 				fbq('track', 'PageView');
 				fbq('trackCustom','job_category', {{job category cookie data}});  `
@@ -102,9 +103,10 @@ function placeFbPixel(facebookPixelCode) {
             script.charset = "utf-8";
             script.text = facebookPixelCode;
             head.appendChild(script)
-        } catch (e) {}
+        } catch (e) {console.log('here1')}
     }
 try {
+		console.log('here2')
     trackJoMeter()
 } catch (e) {};
 try {
@@ -121,6 +123,7 @@ try {
 } catch (e) {};
 try {
 placeFBPixel(facebookPixelCode)
+
 } catch (e) {};
 
 // find elements
